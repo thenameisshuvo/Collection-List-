@@ -6,6 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Collections List</title>
+  <style>
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+    .card-bg {
+      background-color: #f0f4f8; /* Soft light blue background */
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <!-- Background Container -->
@@ -17,16 +32,17 @@
         <!-- Heading -->
         <h1 class="font-serif font-semibold text-3xl text-center">Drawing Collections</h1>
         <!-- Badges -->
-        <div class="flex flex-wrap space-x-2 text-sm justify-center">
-          <button class="bg-white rounded-md text-black py-2 px-4 m-1">Animal</button>
-          <button class="bg-white rounded-md text-black py-2 px-4 m-1">Human</button>
-          <button class="bg-white rounded-md text-black py-2 px-4 m-1">Architecture</button>
-          <button class="bg-white rounded-md text-black py-2 px-4 m-1">People</button>
+        <div class="flex flex-wrap gap-4 mb-8 justify-center">
+          <button id="btn-all" class="bg-gray-500 text-white rounded-lg py-2 px-6 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">All</button>
+          <button id="btn-animal" class="bg-blue-500 text-white rounded-lg py-2 px-6 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">Animal</button>
+          <button id="btn-human" class="bg-green-500 text-white rounded-lg py-2 px-6 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">Human</button>
+          <button id="btn-architecture" class="bg-red-500 text-white rounded-lg py-2 px-6 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">Architecture</button>
+          <button id="btn-people" class="bg-purple-500 text-white rounded-lg py-2 px-6 hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-300">People</button>
         </div>
         <!-- Image Card Container -->
         <div class="flex flex-wrap gap-10 justify-center mt-10">
           <!-- Images Container 1 -->
-          <div class="p-6 bg-white rounded-xl space-y-3 flex flex-col items-center justify-center w-80">
+          <div id="card-animal" class="card card-bg p-6 rounded-xl space-y-3 flex flex-col items-center justify-center w-80">
             <img src="/images/4.jpg" alt="Popular Collection 1" class="h-45 w-full object-cover rounded-3xl" />
             <div class="flex space-x-3">
               <img src="/images/3.jpg" alt="Thumbnail 1" class="w-20 h-20 object-cover rounded-xl" />
@@ -42,7 +58,7 @@
             </div>
           </div>
           <!-- Images Container 2 -->
-          <div class="p-6 bg-white rounded-xl space-y-3 flex flex-col items-center justify-center w-80">
+          <div id="card-human" class="card card-bg p-6 rounded-xl space-y-3 flex flex-col items-center justify-center w-80 hidden">
             <img src="/images/5.jpg" alt="Popular Collection 2" class="h-50 w-full object-cover rounded-3xl" />
             <div class="flex space-x-5">
               <img src="/images/7.jpg" alt="Thumbnail 1" class="w-20 h-20 object-cover rounded-xl" />
@@ -58,7 +74,7 @@
             </div>
           </div>
           <!-- Images Container 3 -->
-          <div class="p-6 bg-white rounded-xl space-y-3 flex flex-col items-center justify-center w-80">
+          <div id="card-architecture" class="card card-bg p-6 rounded-xl space-y-3 flex flex-col items-center justify-center w-80 hidden">
             <img src="/images/10.jpg" alt="Popular Collection 3" class="h-50 w-full object-cover rounded-3xl" />
             <div class="flex space-x-5">
               <img src="/images/11.jpg" alt="Thumbnail 1" class="w-20 h-20 object-cover rounded-xl" />
@@ -74,8 +90,8 @@
             </div>
           </div>
           <!-- Images Container 4-->
-          <div class="p-6 bg-white rounded-xl space-y-3 flex flex-col items-center justify-center w-80">
-            <img src="/images/14.jpg" alt="Popular Collection 2" class="h-50 w-full object-cover rounded-3xl" />
+          <div id="card-people" class="card card-bg p-6 rounded-xl space-y-3 flex flex-col items-center justify-center w-80 hidden">
+            <img src="/images/14.jpg" alt="Popular Collection 4" class="h-50 w-full object-cover rounded-3xl" />
             <div class="flex space-x-5">
               <img src="/images/15.jpg" alt="Thumbnail 1" class="w-20 h-20 object-cover rounded-xl" />
               <img src="/images/16.jpg" alt="Thumbnail 2" class="w-20 h-20 object-cover rounded-xl" />
@@ -93,5 +109,44 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function showAllCards() {
+      document.getElementById('card-animal').classList.remove('hidden');
+      document.getElementById('card-human').classList.remove('hidden');
+      document.getElementById('card-architecture').classList.remove('hidden');
+      document.getElementById('card-people').classList.remove('hidden');
+    }
+
+    document.getElementById('btn-all').addEventListener('click', showAllCards);
+
+    document.getElementById('btn-animal').addEventListener('click', function() {
+      document.getElementById('card-animal').classList.remove('hidden');
+      document.getElementById('card-human').classList.add('hidden');
+      document.getElementById('card-architecture').classList.add('hidden');
+      document.getElementById('card-people').classList.add('hidden');
+    });
+
+    document.getElementById('btn-human').addEventListener('click', function() {
+      document.getElementById('card-animal').classList.add('hidden');
+      document.getElementById('card-human').classList.remove('hidden');
+      document.getElementById('card-architecture').classList.add('hidden');
+      document.getElementById('card-people').classList.add('hidden');
+    });
+
+    document.getElementById('btn-architecture').addEventListener('click', function() {
+      document.getElementById('card-animal').classList.add('hidden');
+      document.getElementById('card-human').classList.add('hidden');
+      document.getElementById('card-architecture').classList.remove('hidden');
+      document.getElementById('card-people').classList.add('hidden');
+    });
+
+    document.getElementById('btn-people').addEventListener('click', function() {
+      document.getElementById('card-animal').classList.add('hidden');
+      document.getElementById('card-human').classList.add('hidden');
+      document.getElementById('card-architecture').classList.add('hidden');
+      document.getElementById('card-people').classList.remove('hidden');
+    });
+  </script>
 </body>
 </html>
