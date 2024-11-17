@@ -58,7 +58,7 @@
             </div>
           </div>
           <!-- Images Container 2 -->
-          <div id="card-human" class="card card-bg p-6 rounded-xl space-y-3 flex flex-col items-center justify-center w-80 hidden">
+          <div id="card-human" class="card card-bg p-6 rounded-xl space-y-3 flex flex-col items-center justify-center w-80">
             <img src="/images/5.jpg" alt="Popular Collection 2" class="h-50 w-full object-cover rounded-3xl" />
             <div class="flex space-x-5">
               <img src="/images/7.jpg" alt="Thumbnail 1" class="w-20 h-20 object-cover rounded-xl" />
@@ -74,7 +74,7 @@
             </div>
           </div>
           <!-- Images Container 3 -->
-          <div id="card-architecture" class="card card-bg p-6 rounded-xl space-y-3 flex flex-col items-center justify-center w-80 hidden">
+          <div id="card-architecture" class="card card-bg p-6 rounded-xl space-y-3 flex flex-col items-center justify-center w-80">
             <img src="/images/10.jpg" alt="Popular Collection 3" class="h-50 w-full object-cover rounded-3xl" />
             <div class="flex space-x-5">
               <img src="/images/11.jpg" alt="Thumbnail 1" class="w-20 h-20 object-cover rounded-xl" />
@@ -90,7 +90,7 @@
             </div>
           </div>
           <!-- Images Container 4-->
-          <div id="card-people" class="card card-bg p-6 rounded-xl space-y-3 flex flex-col items-center justify-center w-80 hidden">
+          <div id="card-people" class="card card-bg p-6 rounded-xl space-y-3 flex flex-col items-center justify-center w-80">
             <img src="/images/14.jpg" alt="Popular Collection 4" class="h-50 w-full object-cover rounded-3xl" />
             <div class="flex space-x-5">
               <img src="/images/15.jpg" alt="Thumbnail 1" class="w-20 h-20 object-cover rounded-xl" />
@@ -118,30 +118,33 @@
       document.getElementById('card-people').classList.remove('hidden');
     }
 
+    // Set All as the default view
+    showAllCards();
+
     document.getElementById('btn-all').addEventListener('click', showAllCards);
 
-    document.getElementById('btn-animal').addEventListener('click', function() {
+    document.getElementById('btn-animal').addEventListener('click', function () {
       document.getElementById('card-animal').classList.remove('hidden');
       document.getElementById('card-human').classList.add('hidden');
       document.getElementById('card-architecture').classList.add('hidden');
       document.getElementById('card-people').classList.add('hidden');
     });
 
-    document.getElementById('btn-human').addEventListener('click', function() {
+    document.getElementById('btn-human').addEventListener('click', function () {
       document.getElementById('card-animal').classList.add('hidden');
       document.getElementById('card-human').classList.remove('hidden');
       document.getElementById('card-architecture').classList.add('hidden');
       document.getElementById('card-people').classList.add('hidden');
     });
 
-    document.getElementById('btn-architecture').addEventListener('click', function() {
+    document.getElementById('btn-architecture').addEventListener('click', function () {
       document.getElementById('card-animal').classList.add('hidden');
       document.getElementById('card-human').classList.add('hidden');
       document.getElementById('card-architecture').classList.remove('hidden');
       document.getElementById('card-people').classList.add('hidden');
     });
 
-    document.getElementById('btn-people').addEventListener('click', function() {
+    document.getElementById('btn-people').addEventListener('click', function () {
       document.getElementById('card-animal').classList.add('hidden');
       document.getElementById('card-human').classList.add('hidden');
       document.getElementById('card-architecture').classList.add('hidden');
@@ -150,3 +153,4 @@
   </script>
 </body>
 </html>
+
